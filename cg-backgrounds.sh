@@ -22,7 +22,6 @@ let index=cont
 
 backgrounds_path=`readlink -f $1`
 lists=(`ls $backgrounds_path`)
-wallpaper=/usr/share/backgrounds/background.png
 accepted_suffixs=("jpg png")
 backgrounds=()
 let backgrounds_count=0
@@ -43,6 +42,13 @@ for ((i=0;i<${#lists[@]};i++)) do
 		backgrounds[$backgrounds_count]=${lists[i]}
 	fi
 done
+
+
+if [[ $backgrounds_count -eq 0 ]]; then
+	echo "error: can't not find valid background pictrue in "$backgrounds_path 
+	exit 1
+fi
+
 
 let index=(index%$backgrounds_count)+1
 for i in $(seq $index $backgrounds_count); do
