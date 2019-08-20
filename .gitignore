@@ -1,2 +1,5 @@
+!*.ds
 *
+# !*.ds
 !*.sh
+# devilspie/*.ds
